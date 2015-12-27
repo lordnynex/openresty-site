@@ -2,11 +2,6 @@ export LC_ALL=C
 export DEBIAN_FRONTEND=noninteractive
 minimal_apt_get_install='apt-get install -y --no-install-recommends'
 
-# Package versions
-export OPENRESTY_VERSION=1.9.7.1
-export NODE_VERSION=5.3.0
-export RUBY_VERSION=2.1.1
-
 # Default services
 # Set 1 to the service you want to disable
 export DISABLE_SYSLOG=${DISABLE_SYSLOG:-0}
@@ -15,5 +10,17 @@ export DISABLE_CRON=${DISABLE_CRON:-0}
 
 # Packages
 export DISABLE_OPENRESTY=${DISABLE_OPENRESTY:-0}
-export DISABLE_NODE=${DISABLE_NODE:-0}
+export DISABLE_NODEJS=${DISABLE_NODEJS:-0}
+export DISABLE_RVM=${DISABLE_RVM:-0}
 export DISABLE_RUBY=${DISABLE_RUBY:-0}
+
+# OpenResty
+export OPENRESTY_VERSION=1.9.7.1
+export OPENRESTY_PREFIX=/usr/local/openresty
+export VAR_PREFIX=/var/nginx
+
+# Node.js
+export NODEJS_VERSION=5.3.0
+
+# Ruby
+export RUBY_VERSION=2.1.1

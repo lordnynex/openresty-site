@@ -3,6 +3,8 @@ set -e
 source /build/buildconfig
 set -x
 
+cd /root
+
 $minimal_apt_get_install perl make build-essential procps libreadline-dev libncurses5-dev libpcre3-dev libssl-dev
 
 echo "==> Importing OpenResty gpg signing keys..."
