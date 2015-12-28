@@ -1,8 +1,11 @@
 language: c
-sudo: false
+sudo: required
+
+services:
+  - docke
 
 install:
   - make build
-  
+
 script:
   - make test
