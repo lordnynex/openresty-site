@@ -6,4 +6,4 @@ set -x
 cd /root
 
 echo "==> Installing Bundler..."
-gem install bundler
+/bin/bash -l -c "gem install bundler"
