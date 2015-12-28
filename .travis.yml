@@ -2,7 +2,7 @@ language: c
 sudo: required
 
 services:
-  - docke
+  - docker
 
 install:
   - make build
