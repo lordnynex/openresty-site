@@ -17,3 +17,6 @@ set -x
 
 ## Install ruby
 [ "$DISABLE_RUBY" -eq 0 ] && /build/packages/ruby/ruby.sh || true
+
+## Instlal Bundler
+[ "$DISABLE_BUNDLER" -eq 0 ] && /build/packages/bundler/bundler.sh || true
