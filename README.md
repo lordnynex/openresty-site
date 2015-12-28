@@ -14,6 +14,8 @@ This image provides
 
 ## Image size
 
+[![](https://badge.imagelayers.io/phatlab/or-site-dev-base:latest.svg)](https://imagelayers.io/?images=phatlab/or-site-dev-base:latest 'Get your own badge on imagelayers.io')
+
 I've made a best effort to keep this image as small as possible. For Ruby, this is proving to be difficult to accomplish. It is important to me that the image remain highly portable without huge bandwidth overhead. This is an ongoing effort.
 
 ## How to use
@@ -47,7 +49,7 @@ After you `build` the image, you may log into the image with `make ssh`. If a co
 ## Known issues
 
 - Sometimes exiting an SSH session initiated with `make ssh` by using ctrl-d causes ssh to exit with a non-zero return code. I have not figured out why this happens yet, but if it it happens to you; know that the container will be left running in the background. For now, it is a manual process to destroy the image. An annoying work around is simply running `exit` instead of the shorthand.
-- Currently the Makefile does not recover from failed builds. It is a manual process to remove the failed build container and then remove the untagged image. 
+- Currently the Makefile does not recover from failed builds. It is a manual process to remove the failed build container and then remove the untagged image.
 
 ## Acknowledgements
 
