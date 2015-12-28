@@ -3,6 +3,9 @@ set -e
 source /build/buildconfig
 set -x
 
+## Copy buildconfig into the image for later use during testing.
+cp /build/buildconfig /etc/buildconfig
+
 ## Temporarily disable dpkg fsync to make building faster.
 if [[ ! -e /etc/dpkg/dpkg.cfg.d/docker-apt-speedup ]]; then
 	echo force-unsafe-io > /etc/dpkg/dpkg.cfg.d/docker-apt-speedup
@@ -39,7 +42,8 @@ $minimal_apt_get_install apt-transport-https ca-certificates
 $minimal_apt_get_install software-properties-common
 
 ## Upgrade all packages.
-apt-get dist-upgrade -y --no-install-recommends
+# apt-get dist-upgrade -y --no-install-recommends
+apt-get upgrade -y --no-install-recommends
 
 ## Fix locale.
 $minimal_apt_get_install language-pack-en
@@ -47,3 +51,6 @@ locale-gen en_US
 update-locale LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8
 echo -n en_US.UTF-8 > /etc/container_environment/LANG
 echo -n en_US.UTF-8 > /etc/container_environment/LC_CTYPE
+
+# Avoid ERROR: invoke-rc.d: policy-rc.d denied execution of start.
+# echo -e "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d

@@ -3,6 +3,9 @@ set -e
 source /build/buildconfig
 set -x
 
+## Install bats
+[ "$DISABLE_BATS" -eq 0 ] && /build/packages/bats/bats.sh || true
+
 ## Install OpenResty
 [ "$DISABLE_OPENRESTY" -eq 0 ] && /build/packages/openresty/openresty.sh || true
 

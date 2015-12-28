@@ -5,7 +5,7 @@ set -x
 
 cd /root
 
-$minimal_apt_get_install perl make build-essential procps libreadline-dev libncurses5-dev libpcre3-dev libssl-dev
+$minimal_apt_get_install perl make build-essential libreadline-dev libncurses5-dev libpcre3-dev libssl-dev
 
 echo "==> Importing OpenResty gpg signing keys..."
 gpg --keyserver pgpkeys.mit.edu --recv-key A0E98066
@@ -52,3 +52,4 @@ echo "==> Cleaning up OpenResty"
 ln -sf $OPENRESTY_PREFIX/luajit/bin/luajit-* $OPENRESTY_PREFIX/luajit/bin/lua
 ln -sf $OPENRESTY_PREFIX/luajit/bin/luajit-* /usr/local/bin/lua
 rm -rf /root/ngx_openresty*
+apt-get purge -y g++-4.8

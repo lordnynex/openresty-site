@@ -24,7 +24,7 @@ echo "==> Configuring RVM..."
 echo "gem: --no-ri --no-rdoc" | tee -a ~/.gemrc
 echo "source /etc/profile.d/rvm.sh" | tee -a /etc/profile
 rvm requirements
+rvm gemset globalcache enable
 
 echo "==> Cleaning up RVM..."
-rvm cleanup all
 rm -rf rvm-installer rvm-installer.asc
