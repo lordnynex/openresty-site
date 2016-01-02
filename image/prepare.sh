@@ -52,5 +52,7 @@ update-locale LANG=en_US.UTF-8 LC_CTYPE=en_US.UTF-8
 echo -n en_US.UTF-8 > /etc/container_environment/LANG
 echo -n en_US.UTF-8 > /etc/container_environment/LC_CTYPE
 
+# Install git
+$minimal_apt_get_install git
 # Avoid ERROR: invoke-rc.d: policy-rc.d denied execution of start.
 # echo -e "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d

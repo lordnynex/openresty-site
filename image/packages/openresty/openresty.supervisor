@@ -1,0 +1,4 @@
+[program:openresty]
+command=/usr/sbin/nginx
+stdout_logfile=/var/log/nginx.log
+redirect_stderr=true

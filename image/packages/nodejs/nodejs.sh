@@ -28,5 +28,29 @@ grep " node-v${NODEJS_VERSION}-linux-x64.tar.gz\$" SHASUMS256.txt.asc | sha256su
 echo "==> Installing Node.js..."
 tar -xzf "node-v${NODEJS_VERSION}-linux-x64.tar.gz" -C /usr/local --strip-components=1
 
-echo "==> Cleaning up Node.js"
+echo "==> Cleaning up Node.js..."
 rm "node-v${NODEJS_VERSION}-linux-x64.tar.gz" SHASUMS256.txt.asc
+
+echo "==> Installing Bower..."
+npm install -g bower
+
+echo "==> Configuring bower for the container..."
+echo '{ "allow_root": true, "interactive": false, "analytics": false }' > /root/.bowerrc
+
+# echo "==> Installing nodevisor..."
+# mkdir -p /tmp/nodevisor
+# mkdir -p /www/dashboard/nodevisor
+#
+# curl -sS --location https://github.com/TAKEALOT/nodervisor/archive/master.zip -o /tmp/nodevisor.zip
+# unzip /tmp/nodevisor.zip -d /tmp/nodevisor/
+# mv /tmp/nodevisor/*/* /www/dashboard/nodevisor/
+#
+# cd /www/dashboard/nodevisor
+# npm install
+#
+# echo "==> Configuring nodevisor..."
+#
+#
+# echo "==> Cleaning up nodevisor..."
+# rm -rf /tmp/nodevisor
+# rm -rf /tmp/nodevisor.zip

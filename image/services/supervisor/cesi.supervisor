@@ -1,0 +1,6 @@
+[program:cesi]
+command=python web.py
+directory=/www/dashboard/cesi/
+environment=APPLICATION_ROOT="/cesi"
+stdout_logfile=/var/log/cesi.log
+redirect_stderr=true

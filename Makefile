@@ -1,12 +1,13 @@
 NAME = phatlab/or-site-dev-base
-VERSION = 0.1.0
+VERSION = 0.2.0
 
-.PHONY: all build test tag_latest release ssh
+.PHONY: all build test tag_latest release ssh multitail
 
 all: build
 
 build:
-	docker build -t $(NAME):$(VERSION) --rm image
+	echo '' > ./build.log
+	docker build -t $(NAME):$(VERSION) --rm image | tee ./build.log
 
 clean:
 	@echo "TODO: Make this less destructive or stop caring about cleaning up after failed builds"
@@ -24,6 +25,9 @@ release: test tag_latest
 	@if ! head -n 1 Changelog.md | grep -q 'release date'; then echo 'Please note the release date in Changelog.md.' && false; fi
 	docker push $(NAME)
 	@echo "*** Don't forget to create a tag. git tag rel-$(VERSION) && git push origin rel-$(VERSION)"
+
+multitail:
+	multitail -l "curl http://172.17.0.2:9001/logtail/openresty" -l "curl http://172.17.0.2:9001/logtail/cesi"
 
 ssh:
 	@chmod 600 image/services/sshd/keys/insecure_key

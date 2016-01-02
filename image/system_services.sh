@@ -27,3 +27,6 @@ $minimal_apt_get_install runit
 
 ## Install cron daemon.
 [ "$DISABLE_CRON" -eq 0 ] && /build/services/cron/cron.sh || true
+
+## Install supervisor
+[ "$DISABLE_SUPERVISOR" -eq 0 ] && /build/services/supervisor/supervisor.sh || true

@@ -2,20 +2,29 @@ export LC_ALL=C
 export DEBIAN_FRONTEND=noninteractive
 minimal_apt_get_install='apt-get install -y --no-install-recommends'
 
-# Default services
-# Set 1 to the service you want to disable
+####### CONTROL #######
+# Set 1 to the service or package you want to disable
+
+## Services
 export DISABLE_SYSLOG=${DISABLE_SYSLOG:-0}
 export DISABLE_SSH=${DISABLE_SSH:-0}
 export DISABLE_CRON=${DISABLE_CRON:-0}
-export DISABLE_SUPERVISOR=${DISABLE_CRON:-0}
+export DISABLE_SUPERVISOR=${DISABLE_SUPERVISOR:-0}
 
-# Packages
+## Packages
 export DISABLE_OPENRESTY=${DISABLE_OPENRESTY:-0}
 export DISABLE_NODEJS=${DISABLE_NODEJS:-0}
 export DISABLE_RVM=${DISABLE_RVM:-0}
 export DISABLE_RUBY=${DISABLE_RUBY:-0}
 export DISABLE_BATS=${DISABLE_BATS:-0}
+
+## Gems
 export DISABLE_BUNDLER=${DISABLE_BUNDLER:-0}
+export DISABLE_JEKYLL=${DISABLE_JEKYLL:-0}
+
+####### CONFIG #######
+
+## Services
 
 # OpenResty
 export OPENRESTY_VERSION=1.9.7.1
@@ -30,3 +39,6 @@ export RUBY_VERSION=2.1.1
 
 # Bats
 export BATS_VERSION=0.4.0
+
+# Jekyll
+export JEKYLL_VERSION=3.0.1
