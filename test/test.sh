@@ -3,4 +3,4 @@ set -o pipefail
 
 export TERM=xterm
 
-bats /test/spec/
+bats --pretty /test/spec/
