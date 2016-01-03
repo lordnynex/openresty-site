@@ -3,6 +3,8 @@ set -e
 source /build/buildconfig
 set -x
 
+OPENRESTY_BUILD_PATH=/build/packages/openresty
+
 cd /root
 
 $minimal_apt_get_install perl make build-essential libreadline-dev libncurses5-dev libpcre3-dev libssl-dev
@@ -48,8 +50,17 @@ make -j${NPROC}
 echo "==> Installing OpenResty..."
 make install
 
-echo "==> Cleaning up OpenResty"
+echo "==> Cleaning up OpenResty..."
 ln -sf $OPENRESTY_PREFIX/luajit/bin/luajit-* $OPENRESTY_PREFIX/luajit/bin/lua
 ln -sf $OPENRESTY_PREFIX/luajit/bin/luajit-* /usr/local/bin/lua
 rm -rf /root/ngx_openresty*
 apt-get purge -y g++-4.8
+
+echo "==> Configuring openresty..."
+rm -rf /etc/nginx/*
+cp -r $OPENRESTY_BUILD_PATH/conf/* /etc/nginx/
+cp $OPENRESTY_BUILD_PATH/dashboard.conf /www/conf/
+
+cp $OPENRESTY_BUILD_PATH/openresty.supervisor /etc/supervisor/conf.d/openresty.conf
+supervisorctl reread
+supervisorctl update

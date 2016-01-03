@@ -53,6 +53,17 @@ echo -n en_US.UTF-8 > /etc/container_environment/LANG
 echo -n en_US.UTF-8 > /etc/container_environment/LC_CTYPE
 
 # Install git
-$minimal_apt_get_install git
+# Note: git is pretty massive. We should not require it unless it's needed
+# $minimal_apt_get_install git
+
 # Avoid ERROR: invoke-rc.d: policy-rc.d denied execution of start.
 # echo -e "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d
+
+
+####
+# Create default dir struct
+####
+mkdir -p /www/conf/
+mkdir -p /www/dashboard/
+mkdir -p /www/site/conf/
+mkdir -p /www/site/root/

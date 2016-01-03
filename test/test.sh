@@ -3,4 +3,4 @@ set -o pipefail
 
 export TERM=xterm
 
-bats --pretty /test/spec/
+bats ${CI:+--tap} /test/spec/

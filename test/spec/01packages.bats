@@ -64,3 +64,12 @@ load /etc/buildconfig
   [ "$status" -eq 0 ]
   [ "$output" = "jekyll ${JEKYLL_VERSION}" ]
 }
+
+#########
+# Openresty
+#########
+@test "Check openresty installation..." {
+  run /sbin/nginx -V
+
+  [ "$status" -eq 0 ]
+}
